@@ -21,7 +21,7 @@ export default function GlobalFootprint() {
         />
 
         {/* Light overlay (white-transparent) */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/85 to-white/70" />
+        <div className="absolute inset-0 bg-linear-to-b from-white/95 via-white/85 to-white/70" />
       </div>
 
       {/* Content */}

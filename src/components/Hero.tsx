@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import ImageWithLoader from "./ImageWithLoader";
 
 interface Slide {
   id: number;
@@ -85,11 +86,13 @@ const Hero: React.FC = () => {
                 scale: { duration: 1.2, ease: "easeInOut" },
               }}
             >
-              <img
+              <ImageWithLoader
                 src={slide.image}
                 alt={slide.title}
+                containerClassName="w-full h-full"
                 className="w-full h-full object-cover"
               />
+              <div className="absolute inset-0 bg-white/30" />
               {/* Light white overlay matching the image */}
               <div className="absolute inset-0 bg-white/30" />
             </motion.div>
@@ -124,7 +127,7 @@ const Hero: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.5 }}
-                  className="text-4xl md:text-5xl lg:text-5xl font-bold text-gray-900 mb-2 leading-tight"
+                  className="text-4xl md:text-5xl lg:text-5xl font-bold text-gray-900 mb-0.5 leading-tight"
                 >
                   {slides[currentSlide].title}
                 </motion.h1>
@@ -134,7 +137,7 @@ const Hero: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4, duration: 0.5 }}
-                  className="text-4xl md:text-5xl lg:text-5xl font-bold text-gray-900 mb-10 leading-tight"
+                  className="text-4xl md:text-5xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight"
                 >
                   {slides[currentSlide].subtitle}
                 </motion.h2>
@@ -154,7 +157,7 @@ const Hero: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6, duration: 0.5 }}
-                  className="text-base md:text-lg text-gray-800 mb-8 max-w-3xl leading-relaxed"
+                  className="text-base md:text-lg text-gray-800 mb-4 max-w-3xl leading-relaxed"
                 >
                   {slides[currentSlide].description}
                 </motion.p>

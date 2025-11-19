@@ -28,7 +28,7 @@ export default function Navbar() {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <header className="w-full bg-[#1e293b] text-white shadow-lg relative z-50">
+    <header className="w-full sticky top-0 bg-[#1e293b] text-white shadow-lg z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 lg:px-6 py-3">
         {/* Logo */}
         <div className="flex items-center">

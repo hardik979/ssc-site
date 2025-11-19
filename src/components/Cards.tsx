@@ -96,7 +96,7 @@ const FeaturedProjects: React.FC = () => {
                 />
 
                 {/* Overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-b from-yellow-500/0 via-yellow-500/60 to-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-linear-to-b from-yellow-500/0 via-yellow-500/60 to-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 {/* Text that appears on hover */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 px-6">

@@ -31,7 +31,7 @@ const GlobalConnections: React.FC = () => {
   };
 
   return (
-    <section className="w-full bg-gradient-to-br from-gray-50 to-slate-100 py-20 px-6">
+    <section className="w-full bg-linear-to-br from-gray-50 to-slate-100 py-20 px-6">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <motion.div
