@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface Slide {
   id: number;
@@ -50,6 +51,7 @@ const slides: Slide[] = [
 
 const Hero: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -122,7 +124,7 @@ const Hero: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.5 }}
-                  className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-2 leading-tight"
+                  className="text-4xl md:text-5xl lg:text-5xl font-bold text-gray-900 mb-2 leading-tight"
                 >
                   {slides[currentSlide].title}
                 </motion.h1>
@@ -132,7 +134,7 @@ const Hero: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4, duration: 0.5 }}
-                  className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-10 leading-tight"
+                  className="text-4xl md:text-5xl lg:text-5xl font-bold text-gray-900 mb-10 leading-tight"
                 >
                   {slides[currentSlide].subtitle}
                 </motion.h2>
@@ -159,6 +161,7 @@ const Hero: React.FC = () => {
 
                 {/* Button */}
                 <motion.button
+                  onClick={() => navigate("/about")} // 👈 redirect to /about
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.7, duration: 0.5 }}

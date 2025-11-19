@@ -40,7 +40,7 @@ const LegacySection: React.FC = () => {
   };
 
   return (
-    <section className="w-full bg-gradient-to-br from-slate-50 to-blue-50 py-20 px-6 overflow-hidden">
+    <section className="w-full bg-linear-to-br from-slate-50 to-blue-50 py-20 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Globe Image */}
@@ -90,7 +90,7 @@ const LegacySection: React.FC = () => {
             >
               A Legacy Built on Quality,
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-cyan-600">
                 Expanding Through Trust
               </span>
             </motion.h2>

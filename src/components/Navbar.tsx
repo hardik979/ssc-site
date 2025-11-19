@@ -1,7 +1,15 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-
+import { useNavigate } from "react-router-dom";
+const navRoutes: Record<string, string> = {
+  Home: "/",
+  "About Us": "/about",
+  Products: "/products",
+  Sustainability: "/sustainability",
+  "E-Catalogue": "/catalogue",
+  Contact: "/contact",
+};
 const navItems = [
   "Home",
   "About Us",
@@ -12,6 +20,8 @@ const navItems = [
 ];
 
 export default function Navbar() {
+  const navigate = useNavigate();
+
   const [isOpen, setIsOpen] = useState(false);
   const [activeItem, setActiveItem] = useState("Home");
 
@@ -22,12 +32,14 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 lg:px-6 py-3">
         {/* Logo */}
         <div className="flex items-center">
-          <div className="h-14 w-[140px] flex items-center justify-center">
-            <img
-              src="./logo.png"
-              alt="SSC Logo"
-              className="h-full w-full object-contain"
-            />
+          <div className="h-14 w-[120px] flex items-center justify-center">
+            <a href="/">
+              <img
+                src="./logo.png"
+                alt="SSC Logo"
+                className="h-full w-full object-contain"
+              />
+            </a>
           </div>
         </div>
 
@@ -38,7 +50,10 @@ export default function Navbar() {
             return (
               <button
                 key={item}
-                onClick={() => setActiveItem(item)}
+                onClick={() => {
+                  setActiveItem(item);
+                  navigate(navRoutes[item]);
+                }}
                 className="relative pb-1 transition-colors group"
               >
                 <span
@@ -125,6 +140,7 @@ export default function Navbar() {
                       transition={{ delay: index * 0.05 }}
                       onClick={() => {
                         setActiveItem(item);
+                        navigate(navRoutes[item]);
                         setIsOpen(false);
                       }}
                       className={`text-left px-4 py-3 rounded-lg transition-all mb-1 ${
