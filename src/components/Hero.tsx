@@ -21,8 +21,8 @@ const slides: Slide[] = [
     title: "Engineering a World",
     subtitle: "of Possibilities",
     description:
-      "With over 65 years of legacy, Swastik Sales Corporation delivers rubber, plastic, and metal engineering solutions that strengthen tunnels, bridges, railways, metros, green energy, Safety Equipments and highways across 15+ countries – powering the foundations of tomorrow.",
-    buttonText: "Learn More",
+      "Delivering advanced engineering solutions that strengthen tunnels, bridges, railways, and energy systems worldwide. Our commitment to quality and performance drives progress across every sector we serve.",
+    buttonText: "Explore Products",
     image:
       "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1920&q=80",
   },
@@ -33,20 +33,18 @@ const slides: Slide[] = [
     subtitle: "Foundation Today",
     description:
       "Leading the industry with cutting-edge engineering solutions that transform infrastructure projects worldwide. Our commitment to excellence drives progress in every sector we serve.",
-    buttonText: "Explore Solutions",
-    image:
-      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1920&q=80",
+    buttonText: "Explore Products",
+    image: "/bridge.jpg",
   },
   {
     id: 3,
     badge: "Global Reach, Local Impact",
-    title: "Trusted Components for",
-    subtitle: "Global Infrastructure",
+    title: "Strength Built",
+    subtitle: "For the Future",
     description:
       "Partnering with industry leaders across continents to deliver world-class engineering components. From concept to completion, we're your trusted partner in building resilient infrastructure.",
-    buttonText: "Our Projects",
-    image:
-      "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1920&q=80",
+    buttonText: "Explore Products",
+    image: "/tunnel.jpg",
   },
 ];
 
@@ -79,11 +77,9 @@ const Hero: React.FC = () => {
               initial={false}
               animate={{
                 opacity: index === currentSlide ? 1 : 0,
-                scale: index === currentSlide ? 1 : 1.05,
               }}
               transition={{
                 opacity: { duration: 1, ease: "easeInOut" },
-                scale: { duration: 1.2, ease: "easeInOut" },
               }}
             >
               <ImageWithLoader
@@ -127,7 +123,7 @@ const Hero: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.5 }}
-                  className="text-4xl md:text-5xl lg:text-5xl font-bold text-gray-900 mb-0.5 leading-tight"
+                  className="text-5xl md:text-5xl lg:text-5xl font-bold text-gray-900 leading-tight"
                 >
                   {slides[currentSlide].title}
                 </motion.h1>

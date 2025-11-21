@@ -1,6 +1,6 @@
 // src/components/ContactAppointmentSection.tsx
 import { useState } from "react";
-import type { FormEvent, ChangeEvent } from "react"; // 👈 fixes verbatimModuleSyntax issue
+import type { FormEvent, ChangeEvent } from "react";
 
 import {
   Phone,
@@ -10,31 +10,28 @@ import {
   Facebook,
   Twitter,
   Linkedin,
+  MessageCircleMoreIcon,
 } from "lucide-react";
 
 interface FormState {
-  firstName: string;
-  lastName: string;
+  name: string;
   email: string;
-  contactDetails: string;
-  message: string;
+  contact: string;
+  organizationName: string;
 }
 
 interface FormErrors {
-  firstName?: string;
-  lastName?: string;
+  name?: string;
   email?: string;
-  contactDetails?: string;
-  message?: string;
+  contact?: string;
 }
 
 export default function ContactAppointmentSection() {
   const [form, setForm] = useState<FormState>({
-    firstName: "",
-    lastName: "",
+    name: "",
     email: "",
-    contactDetails: "",
-    message: "",
+    contact: "",
+    organizationName: "",
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
@@ -58,16 +55,10 @@ export default function ContactAppointmentSection() {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     const phoneRegex = /^[0-9+\-\s()]{7,20}$/;
 
-    if (!form.firstName.trim()) {
-      newErrors.firstName = "First name is required.";
-    } else if (form.firstName.trim().length < 2) {
-      newErrors.firstName = "First name must be at least 2 characters.";
-    }
-
-    if (!form.lastName.trim()) {
-      newErrors.lastName = "Last name is required.";
-    } else if (form.lastName.trim().length < 2) {
-      newErrors.lastName = "Last name must be at least 2 characters.";
+    if (!form.name.trim()) {
+      newErrors.name = "Name is required.";
+    } else if (form.name.trim().length < 2) {
+      newErrors.name = "Name must be at least 2 characters.";
     }
 
     if (!form.email.trim()) {
@@ -76,16 +67,10 @@ export default function ContactAppointmentSection() {
       newErrors.email = "Please enter a valid email address.";
     }
 
-    if (!form.contactDetails.trim()) {
-      newErrors.contactDetails = "Contact details are required.";
-    } else if (!phoneRegex.test(form.contactDetails.trim())) {
-      newErrors.contactDetails = "Please enter a valid phone number.";
-    }
-
-    if (!form.message.trim()) {
-      newErrors.message = "Message is required.";
-    } else if (form.message.trim().length < 20) {
-      newErrors.message = "Message should be at least 20 characters.";
+    if (!form.contact.trim()) {
+      newErrors.contact = "Contact number is required.";
+    } else if (!phoneRegex.test(form.contact.trim())) {
+      newErrors.contact = "Please enter a valid phone number.";
     }
 
     return newErrors;
@@ -105,24 +90,31 @@ export default function ContactAppointmentSection() {
     setSubmitStatus("idle");
 
     try {
-      // 🔗 BACKEND PLACEHOLDER:
-      // Replace this with your real API call.
-      // Example:
-      // await fetch("/api/contact", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify(form),
-      // });
+      // Google Form submission
+      const formData = new FormData();
 
-      await new Promise((res) => setTimeout(res, 800)); // mock delay
+      // Replace these entry IDs with your actual Google Form field entry IDs
+      formData.append("entry.1995762809", form.name);
+      formData.append("entry.355345215", form.email);
+      formData.append("entry.1030419938", form.contact);
+      formData.append("entry.1613813149", form.organizationName);
+
+      // Replace YOUR_FORM_ID with your actual Google Form ID
+
+      const GOOGLE_FORM_URL = `https://docs.google.com/forms/d/e/1FAIpQLSe6ZdIP84sYFzQmTahpVu5VgowQUpf0V6UQzyvlWi4vsXGAmA/formResponse`;
+
+      await fetch(GOOGLE_FORM_URL, {
+        method: "POST",
+        body: formData,
+        mode: "no-cors", // Required for Google Forms
+      });
 
       setSubmitStatus("success");
       setForm({
-        firstName: "",
-        lastName: "",
+        name: "",
         email: "",
-        contactDetails: "",
-        message: "",
+        contact: "",
+        organizationName: "",
       });
       setErrors({});
     } catch (err) {
@@ -140,7 +132,7 @@ export default function ContactAppointmentSection() {
   return (
     <section className="w-full bg-white py-16 px-4">
       <div className="mx-auto max-w-6xl">
-        {/* Outer card – matches your screenshot */}
+        {/* Outer card */}
         <div className="rounded-3xl bg-[#3b4252] shadow-2xl overflow-hidden">
           <div className="flex flex-col lg:flex-row">
             {/* LEFT: FORM */}
@@ -158,52 +150,26 @@ export default function ContactAppointmentSection() {
                 className="mt-8 space-y-5"
                 noValidate
               >
-                <div className="grid gap-5 md:grid-cols-2">
-                  <div>
-                    <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-gray-200">
-                      First Name
-                    </label>
-                    <input
-                      name="firstName"
-                      value={form.firstName}
-                      onChange={handleChange}
-                      placeholder="Enter your First Name"
-                      className={`${inputBase} ${
-                        errors.firstName ? inputError : ""
-                      }`}
-                    />
-                    {errors.firstName && (
-                      <p className="mt-1 text-xs text-red-300">
-                        {errors.firstName}
-                      </p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-gray-200">
-                      Last Name
-                    </label>
-                    <input
-                      name="lastName"
-                      value={form.lastName}
-                      onChange={handleChange}
-                      placeholder="Enter your First Name"
-                      className={`${inputBase} ${
-                        errors.lastName ? inputError : ""
-                      }`}
-                    />
-                    {errors.lastName && (
-                      <p className="mt-1 text-xs text-red-300">
-                        {errors.lastName}
-                      </p>
-                    )}
-                  </div>
+                <div>
+                  <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-gray-200">
+                    Name
+                  </label>
+                  <input
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    placeholder="Enter your Name"
+                    className={`${inputBase} ${errors.name ? inputError : ""}`}
+                  />
+                  {errors.name && (
+                    <p className="mt-1 text-xs text-red-300">{errors.name}</p>
+                  )}
                 </div>
 
                 <div className="grid gap-5 md:grid-cols-2">
                   <div>
                     <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-gray-200">
-                      E - Mail
+                      E-Mail
                     </label>
                     <input
                       name="email"
@@ -224,20 +190,20 @@ export default function ContactAppointmentSection() {
 
                   <div>
                     <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-gray-200">
-                      Contact Details
+                      Contact
                     </label>
                     <input
-                      name="contactDetails"
-                      value={form.contactDetails}
+                      name="contact"
+                      value={form.contact}
                       onChange={handleChange}
                       placeholder="Enter your Contact Number"
                       className={`${inputBase} ${
-                        errors.contactDetails ? inputError : ""
+                        errors.contact ? inputError : ""
                       }`}
                     />
-                    {errors.contactDetails && (
+                    {errors.contact && (
                       <p className="mt-1 text-xs text-red-300">
-                        {errors.contactDetails}
+                        {errors.contact}
                       </p>
                     )}
                   </div>
@@ -245,23 +211,18 @@ export default function ContactAppointmentSection() {
 
                 <div>
                   <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-gray-200">
-                    Message
+                    Organization Name{" "}
+                    <span className="text-gray-400 normal-case">
+                      (Optional)
+                    </span>
                   </label>
-                  <textarea
-                    name="message"
-                    value={form.message}
+                  <input
+                    name="organizationName"
+                    value={form.organizationName}
                     onChange={handleChange}
-                    placeholder="Enter your Message"
-                    rows={4}
-                    className={`${inputBase} resize-none align-top ${
-                      errors.message ? inputError : ""
-                    }`}
+                    placeholder="Enter your Organization Name"
+                    className={inputBase}
                   />
-                  {errors.message && (
-                    <p className="mt-1 text-xs text-red-300">
-                      {errors.message}
-                    </p>
-                  )}
                 </div>
 
                 {/* Status text */}
@@ -277,7 +238,7 @@ export default function ContactAppointmentSection() {
                     </p>
                   )}
 
-                {/* Yellow button centered like screenshot */}
+                {/* Yellow button centered */}
                 <div className="pt-2 flex justify-center">
                   <button
                     type="submit"
@@ -371,6 +332,13 @@ export default function ContactAppointmentSection() {
                     className="flex h-8 w-8 items-center justify-center rounded-full bg-white/5 hover:bg-white/15 transition"
                   >
                     <Linkedin className="h-4 w-4 text-white" />
+                  </a>
+                  <a
+                    href="#"
+                    aria-label="LinkedIn"
+                    className="flex h-8 w-8 items-center justify-center rounded-full bg-white/5 hover:bg-white/15 transition"
+                  >
+                    <MessageCircleMoreIcon className="h-4 w-4 text-white" />
                   </a>
                 </div>
               </div>

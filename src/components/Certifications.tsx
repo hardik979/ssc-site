@@ -31,7 +31,7 @@ const Certifications: React.FC = () => {
       description: "Validated for consistent quality management systems.",
     },
     {
-      image: "./makein_india.png",
+      image: "./iaf.jpeg",
       title: "Sustainability Committed",
       description:
         "Producing responsibly through efficient, eco-friendly practices.",

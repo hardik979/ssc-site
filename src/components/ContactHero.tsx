@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 
-const CONTACT_BG =
-  "https://images.unsplash.com/photo-1525182008055-f88b95ff7980?w=1600&h=800&fit=crop&auto=format&q=80";
+const CONTACT_BG = "./contact.jpg";
 
 export default function ContactHero() {
   return (

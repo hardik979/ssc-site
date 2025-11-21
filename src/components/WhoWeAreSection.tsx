@@ -15,11 +15,11 @@ const WhoWeAre: React.FC = () => {
 
   const tabContent: TabContent = {
     mission:
-      "Since 1959, Swastik Sales Corporation has evolved with a singular goal — to engineer products that empower progress. We aim to provide high-performance rubber, plastic, and metal solutions that deliver safety, precision, and longevity for infrastructure projects worldwide. Through continuous innovation and a commitment to quality, we bridge the gap between reliability and modern engineering excellence.",
+      "To create high-performance engineering solutions that strengthen global infrastructure. We focus on delivering reliable, precision-built rubber, plastic, and metal components that support safer, smarter, and more sustainable development across every sector we serve.",
     vision:
-      "To be the global leader in engineering solutions, setting the benchmark for innovation, quality, and sustainability in infrastructure development. We envision a world where our products power the foundations of tomorrow's most critical projects.",
+      "To become a global benchmark for innovation, quality, and engineering excellence. We envision our products powering the backbone of tomorrow’s most ambitious projects—bridges, tunnels, railways, energy systems, and beyond.",
     history:
-      "Founded in 1959, Swastik Sales Corporation began as a small enterprise with a vision to serve India's growing infrastructure needs. Over six decades, we've expanded across 15+ countries, consistently delivering excellence in rubber, plastic, and metal engineering solutions.",
+      "For decades, we’ve grown from a specialised manufacturer into a trusted industry partner with worldwide reach. Our journey is built on continuous improvement, advanced manufacturing, and a commitment to delivering solutions that stand the test of time.",
   };
 
   const features = [
@@ -72,9 +72,9 @@ const WhoWeAre: React.FC = () => {
                 WHO WE ARE
               </p>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                We work for you since 1989.
+                Working since 1989.
                 <br />
-                Industrial around the world.
+                Industrial Excellence across the world.
               </h2>
             </div>
 

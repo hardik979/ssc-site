@@ -44,10 +44,10 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-sm font-semibold text-white mb-3">Contact</h4>
+            <h4 className="text-sm font-semibold text-white mb-3">Contact Us</h4>
             <ul className="space-y-2 text-xs text-slate-400">
-              <li>+1 (555) 123-4567</li>
-              <li>info@industech.com</li>
+              <li>+91 70878 15515</li>
+              <li>contact@sscglobal.in</li>
               <li className="flex gap-3 text-lg">
                 {/* Social icons placeholders */}
                 <span>in</span>
@@ -60,7 +60,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-10 border-t border-white/10 pt-4 text-[11px] md:text-xs text-slate-500 flex flex-col md:flex-row items-center justify-between gap-3">
-          <span>© 2024 IndusTech Solutions. All rights reserved.</span>
+          <span>© 2025 Swastik Sales Corporation. All rights reserved.</span>
           <span>Built with precision & reliability.</span>
         </div>
       </div>

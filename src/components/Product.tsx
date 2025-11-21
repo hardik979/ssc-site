@@ -18,28 +18,35 @@ const HeroCategories: React.FC = () => {
       title: "Tunnels & Dams",
       description:
         "Sealing systems and accessories that ensure watertight integrity and long-term durability. From cast-in gaskets to hydrophilic seals, each product is engineered to perform under pressure.",
-      image: "./product.png",
+      image: "./dams.png",
     },
     {
       id: 2,
       title: "Railways & Metros",
       description:
-        "High-performance fittings and mobility components that keep networks running efficiently. From P-Way tools to track machines and rail trolleys — precision built for everyday reliability.",
-      image: "./product.png",
+        "High-performance fittings and mobility components that keep networks running efficiently. From P-Way tools to track machines and rail trolleys - precision built for everyday reliability.",
+      image: "./railway.png",
     },
     {
       id: 3,
-      title: "Bridges",
+      title: "Bridges & National Highways",
       description:
-        "Heavy-duty connection and anchoring systems designed for lasting structural stability. Each component ensures strength, flexibility, and safety across every application.",
-      image: "./product.png",
+        "Structural systems and prestress components built to strengthen large-scale civil projects. From HDPE sheaths to anchorage hardware, every product ensures long-term safety, load endurance, and consistent site performance.",
+      image: "./bridges.png",
     },
     {
       id: 4,
-      title: "Highways",
+      title: "Green Energy",
       description:
-        "Durable road construction components built to withstand heavy traffic and harsh conditions. Engineered for longevity and optimal performance.",
-      image: "./product.png",
+        "Advanced aluminium and composite solutions supporting modern renewable infrastructure. From solar walkways to mounting structures, each product maximizes safety, efficiency, and long-term sustainability in clean-energy installations.",
+      image: "./green.png",
+    },
+    {
+      id: 5,
+      title: "Safety Equipments",
+      description:
+        "Reliable protection systems engineered for industrial and construction environments. From lifeline assemblies to fall-prevention hardware, every component delivers assured safety, compliance, and on-site confidence.",
+      image: "./safety.png",
     },
   ];
 
@@ -86,7 +93,7 @@ const HeroCategories: React.FC = () => {
             className="w-full lg:w-[35%] shrink-0"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight">
-              Shop by our Hero Categories
+              Shop by our Categories
             </h2>
 
             <p className="text-gray-700 text-sm md:text-base lg:text-lg leading-relaxed mb-6 md:mb-8">
@@ -145,11 +152,11 @@ const HeroCategories: React.FC = () => {
                     </button>
 
                     {/* Product Image */}
-                    <div className="bg-white rounded-2xl p-6 mb-5 flex items-center justify-center h-48 relative z-10">
+                    <div className="bg-white rounded-2xl mb-5 flex items-center justify-center h-48 relative z-10 overflow-hidden">
                       <img
                         src={categories[currentIndex].image}
                         alt={categories[currentIndex].title}
-                        className="w-full h-full object-contain"
+                        className="w-full h-full object-cover"
                       />
                     </div>
 
@@ -287,11 +294,11 @@ const HeroCategories: React.FC = () => {
                           )}
 
                           {/* Product Image */}
-                          <div className="bg-white rounded-2xl p-8 mb-5 flex items-center justify-center h-52 relative z-10">
+                          <div className="bg-white rounded-2xl mb-5 flex items-center justify-center h-52 relative z-10 overflow-hidden">
                             <img
                               src={category.image}
                               alt={category.title}
-                              className="w-full h-full object-contain"
+                              className="w-full h-full object-cover"
                             />
                           </div>
 
