@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
+import PhoneInput from "react-phone-number-input";
 interface FormData {
   name: string;
   email: string;
@@ -17,7 +17,7 @@ const CTASection: React.FC = () => {
     organizationName: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-
+  const [phone, setPhone] = useState<string | undefined>();
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -213,17 +213,29 @@ const CTASection: React.FC = () => {
                     >
                       Contact Number <span className="text-red-500">*</span>
                     </label>
-                    <input
-                      type="tel"
-                      id="contact"
-                      name="contact"
-                      value={form.contact}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#fbbf24] focus:border-transparent outline-none transition-all"
-                      placeholder="+91 XXXXXXXXXX"
-                    />
-                  </div>
 
+                    <div className="border border-gray-300 rounded-lg px-2 py-1 focus-within:ring-2 focus-within:ring-[#fbbf24] focus-within:border-transparent">
+                      <PhoneInput
+                        id="contact"
+                        international
+                        defaultCountry="IN"
+                        value={phone}
+                        onChange={(value) => {
+                          setPhone(value || "");
+                          setForm((prev) => ({
+                            ...prev,
+                            contact: value || "",
+                          }));
+                        }}
+                        className="phone-input w-full [&_.PhoneInputInput]:w-full [&_.PhoneInputInput]:border-none [&_.PhoneInputInput]:focus:outline-none [&_.PhoneInputInput]:px-2 [&_.PhoneInputInput]:py-2"
+                      />
+                    </div>
+
+                    {/* Optional tiny helper text */}
+                    <p className="mt-1 text-xs text-gray-500">
+                      Includes country code, e.g. +91 98765 43210
+                    </p>
+                  </div>
                   <div>
                     <label
                       htmlFor="organizationName"
